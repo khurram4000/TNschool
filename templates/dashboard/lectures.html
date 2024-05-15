@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* Additional styles can be added here */
+    #video-container {
+      width: 800px;
+    }
+    #lecture-list {
+      width: 200px;
+    }
+    @media (min-width: 768px) {
+      #video-container {
+        width: 80%;
+      }
+      #lecture-list {
+        width: 20%;
+      }
+    }
+    #lecture-list-scroll {
+      height: 560px; /* Adjust the height as needed */
+      overflow-y: auto;
+    }
+    #tab-content {
+      margin-top: 20px;
+    }
+    .topics-scroll {
+      max-height: 400px; /* Adjust the max height as needed */
+      overflow-y: auto;
+    }
+  </style>
+
+  <div class="container">
+    <div class="row" style="margin-top:50px;">
+      <!-- Section 1: Video Container -->
+      <div id="video-container" class="col-9">
+        <!-- Insert your video player here -->
+        <h2>Video Section</h2>
+
+          <div style="position:relative;padding-top:56.25%;">
+              <iframe id="videoPlayer" src="https://www.youtube.com/embed/IWLkHkBMwcA?si=S9R3ths6EhbN_TP6" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
+          </div>
+<!--          <iframe id="videoPlayer" width="100%" height="100%" src="https://www.youtube.com/embed/IWLkHkBMwcA?si=S9R3ths6EhbN_TP6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
+          <h4 id="lecture-title">Lecture Title</h4>
+      </div>
+
+      <!-- Section 2: Lecture List -->
+      <div id="lecture-list" class="col-3">
+        <!-- Insert your lecture links here -->
+        <h2>Lectures List</h2>
+        <div id="lecture-list-scroll">
+          <ul>
+              {% for lecture in lectures %}
+            <li>
+                <a href="#"
+                   onclick=
+                           "displayVideo(
+                            '{{ lecture.url }}',
+                            '{{lecture.lec_title}}',
+                            );
+                            return false;">{{lecture.lec_title}}</a>
+            </li>
+              {% endfor %}
+            <!-- Add more lecture links as needed -->
+            <!-- You can add more <li> elements here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Tabs for Course Content, Notes, Doubts -->
+    <div id="tab-content" style="margin-top:100px;">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#course-content" data-bs-toggle="tab">Course Content</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#notes" data-bs-toggle="tab">Notes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#doubts" data-bs-toggle="tab">Doubts</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="course-content">
+          <!-- Content for Course Content tab -->
+          <h3>Course Content</h3>
+            <div id="topic-details">
+            <!-- Content of the Details column -->
+            Select a topic to view details.
+            </div>
+        </div>
+        <div class="tab-pane fade" id="notes">
+          <!-- Content for Notes tab -->
+          <h3>Notes</h3>
+        </div>
+        <div class="tab-pane fade" id="doubts">
+          <!-- Content for Doubts tab -->
+          <h3>Doubts</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!--<h1>LECTURES Page</h1>-->
+<!--        {% for lecture in lectures %}-->
+<!--            {{lecture}}<br>-->
+<!--            {{lecture.id}}<br>-->
+<!--            {{lecture.lec_title}}-->
+<!--        {% endfor %}-->
+
+<script>
+    function displayVideo(videoId, lecTitle) {
+      alert("Hello"+videoId+lecTitle)
+      let video = document.getElementById('videoPlayer');
+      let title = document.getElementById('lecture-title');
+    // Set the src attribute with the provided videoUrl
+    video.src = videoId;
+    title.innerText = lecTitle;
+    // Optionally, you might want to start playing the video automatically
+<!--    video.play();-->
+    }
+
+
+  </script>
+{% endblock content %}

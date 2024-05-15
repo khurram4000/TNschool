@@ -1,0 +1,26 @@
+.bg-creamy-white {
+  background-color: #f5f5dc; /* Creamy white color */
+}
+
+.navbar-items .nav-link {
+  font-size: 20px; /* Adjust the font size as needed */
+}
+
+/* Active color for navbar items */
+.navbar-items .nav-link.active,
+.navbar-items .nav-link:hover {
+  color: red; /* Change the color to your preference */
+}
+
+/* Highlight color for specific navbar item */
+.navbar-items .nav-link.highlighted {
+  color: green; /* Change the color to your preference */
+}
+.dashboard-container{
+    margin-top:150px;
+}
+.card {
+      margin-bottom: 20px;
+    }
+
+

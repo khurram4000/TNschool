@@ -1,0 +1,1 @@
+web gunicorn TNschool.wsgi:application --log-file -
